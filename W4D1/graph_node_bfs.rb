@@ -22,6 +22,7 @@ def bfs(starting_node, target_value)
             visited.add(child)
         end
     end
+    nil
 end
 
 
