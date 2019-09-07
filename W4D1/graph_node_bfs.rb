@@ -8,10 +8,9 @@ class GraphNode
 end
 
 def bfs(starting_node, target_value)
-    queue = []
+    queue = [starting_node]
     visited = Set.new
-
-    queue.push(starting_node)
+    
     visited.add(starting_node)
     until queue.empty?
         node = queue.shift
