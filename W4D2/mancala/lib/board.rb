@@ -2,10 +2,13 @@ require "byebug"
 
 class Board
   attr_accessor :cups
+  attr_reader :name1, :name2
 
   def initialize(name1, name2)
     @cups = Array.new(14) { Array.new }    
     (0..12).each { |i| cups[i] = place_stones unless (i == 6 || i == 13) }
+    @name1 = name1
+    @name2 = name2
   end
 
   def place_stones
@@ -22,16 +25,16 @@ class Board
     stones = cups[start_pos].dup
     cups[start_pos] = []
     idx = start_pos + 1
-    until stones.empty?
+    # until stones.empty?
       
-    end
+    # end
   end
 
   def next_turn(ending_cup_idx)
     # helper method to determine whether #make_move returns :switch, :prompt, or ending_cup_idx
-    if cups[ending_cup_idx].empty?
-      :switch
-    elsif  
+    # if cups[ending_cup_idx].empty?
+    #   :switch
+    # elsif  
 
 
   end
@@ -49,5 +52,7 @@ class Board
   end
 
   def winner
+    return :draw if cups[6] == cups[13]
+    cups[6].length > cups[13].length ? name1 : name2
   end
 end
