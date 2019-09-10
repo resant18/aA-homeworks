@@ -48,7 +48,7 @@ class Board
   end
 
   def one_side_empty?
-
+    (0..5).any? { |idx| cups[idx] == [] }
   end
 
   def winner
