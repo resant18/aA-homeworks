@@ -23,6 +23,7 @@ View.prototype.exercise1 = function () {
   //Result: Every square should turn orange (we already have a CSS rule)
 
   //your code here!
+  $('li').addClass("orange");
 };
 
 View.prototype.exercise2 = function () {
@@ -30,13 +31,21 @@ View.prototype.exercise2 = function () {
   //Result: Every square vanishes
 
   //your code here!
+  const $ul = $("ul");
+  $ul.children().remove();
 };
 
 View.prototype.exercise3 = function () {
   //Challenge: Add an <h1> with the text 'i love jquery' under the grid.
   //Result: An <h1> with the text 'i love jquery' appears under the grid.
 
-  //your code here!
+  //your code here!  
+  const $h1 = $("<h1></h1>");
+  $h1.append("i love jquery");
+  $("#easel").after($h1);
+
+  // or:
+  // $("#easel").after("<h1>i love jquery</h1>");
 };
 
 View.prototype.exercise4 = function () {
@@ -44,6 +53,10 @@ View.prototype.exercise4 = function () {
   //Result: Your name appears in every other square.
 
   //your code here!
+  $listItems = $("li");
+  $listItems.each(function(index) {
+    if (index % 2 === 0) this.textContent = "RS";
+  });
 };
 
 View.prototype.exercise5 = function () {
@@ -55,6 +68,13 @@ View.prototype.exercise5 = function () {
   //  'data-pos' of every square
 
   //your code here!
+  $(".square").on("click", event => {
+    event.preventDefault();
+
+    const currentTarget = event.currentTarget;
+    const $currentTarget = $(currentTarget);
+    alert($currentTarget.attr("data-pos"));
+  });
 };
 
 View.prototype.exercise6 = function () {
@@ -65,6 +85,10 @@ View.prototype.exercise6 = function () {
   //hint: use window._randomColorString() (defined at top) to get a random color!
 
   //your code here!
+  const $squareItems = $(".square");
+  $squareItems.each(function (index) {    
+    this.setAttribute("style", "background-color: " + window._randomColorString());    
+  })
 };
 
 View.prototype.exercise7 = function(){
@@ -75,6 +99,13 @@ View.prototype.exercise7 = function(){
   //rainbow.
 
   //your code here!
+  $(".square").on("mouseover", event => {
+    event.preventDefault();
+    const currentTarget = event.currentTarget;
+    const $currentTarget = $(currentTarget);
+    //console.log($currentTarget.attr("data-pos"));
+    console.log($currentTarget.css("background-color"));
+  })
 };
 
 
